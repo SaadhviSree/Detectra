@@ -1,3 +1,64 @@
+# Attack Classes and Types
+
+## Attack Class: DoS (Denial of Service)
+
+These attacks aim to disrupt the normal functioning of a target system by overwhelming it with traffic or requests. The attack types under this class are:
+
+- **Back**
+- **Land**
+- **Neptune**
+- **Pod**
+- **Smurf**
+- **Teardrop**
+- **Apache2**
+- **Udpstorm**
+- **Processtable**
+- **Worm**
+
+## Attack Class: Probe
+
+Probe attacks are those where the attacker scans the network or system to gather information about the target, often as a precursor to a more harmful attack. The attack types under this class are:
+
+- **Satan**
+- **Ipsweep**
+- **Nmap**
+- **Portsweep**
+- **Mscan**
+- **Saint**
+
+## Attack Class: R2L (Remote to Local)
+
+R2L attacks involve an attacker trying to gain unauthorized access to a system from a remote location, often by exploiting vulnerabilities. The attack types under this class are:
+
+- **Guess_Password**
+- **Ftp_write**
+- **Imap**
+- **Phf**
+- **Multihop**
+- **Warezmaster**
+- **Warezclient**
+- **Spy**
+- **Xlock**
+- **Xsnoop**
+- **Snmpguess**
+- **Snmpgetattack**
+- **Httptunnel**
+- **Sendmail**
+- **Named**
+
+## Attack Class: U2R (User to Root)
+
+U2R attacks involve an attacker trying to escalate their privileges from a normal user to a root user on a target system. The attack types under this class are:
+
+- **Buffer_overflow**
+- **Loadmodule**
+- **Rootkit**
+- **Perl**
+- **Sqlattack**
+- **Xterm**
+- **Ps**
+
+
 # Network Connection Data Set Features
 
 ## List of Columns
