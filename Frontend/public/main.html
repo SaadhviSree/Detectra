@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NA</title>
+  <link rel="stylesheet" href="styles.css">
+
+</head>
+<script>
+    function showFileInput() {
+      const fileInputContainer = document.getElementById('file-input-container');
+      fileInputContainer.style.display = 'block';
+    }
+
+    function handleFileUpload(event) {
+      const file = event.target.files[0];
+      if (file) {
+        alert(`File "${file.name}" uploaded successfully!`);
+        // Here you would typically send the file to the server, e.g., via a form submission or AJAX
+      }
+    }
+  </script>
+
+
+<body>
+  <nav class="navbar">
+    <div class="logo">
+        <img src="icon2.png" alt="Icon">
+        Detectra
+    </div>
+    <div>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#login">Login</a>
+        <a href="#contact">Contact</a>
+        <img src="searchicon.png" alt="Search Icon" class="search-icon">
+    </div>
+  </nav>
+
+  <div class="hero-section">
+    <div class="hero-content">
+      <h1>Network Anomaly</h1>
+      <p>Detect, analyze, and secure your network in real-time.</p>
+    </div>
+  </div>
+  <div class="features-container">
+    <div class="feature-tile" id="capture-tile">
+        <h2>CAPTURE</h2>
+        <p>Current network traffic and generate criticality.</p>
+    </div>
+    <div class="feature-tile" id="analyse-tile" onclick="showFileInput()">
+      <h2>ANALYSE</h2>
+      <p>Check for any network anomalies from traffic analysis.</p>
+    </div>
+  </div>
+
+  <div id="file-input-container" style="display: none; margin-top: 20px; text-align: center;">
+    <label for="file-upload" style="font-size: 16px; font-weight: bold;">Upload your traffic data file:</label><br><br>
+    <input type="file" id="file-upload" name="file-upload" accept=".txt,.csv,.log" onchange="handleFileUpload(event)" />
+  </div>
+
+  <div class="table-container" id="table-container">
+    <table id="data-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Timestamp</th>
+            <th>Source IP</th>
+            <th>Destination IP</th>
+            <th>Protocol</th>
+            <th>Source Port</th>
+            <th>Destination Port</th>
+            <th>Flags</th>
+            <th>Packet Size</th>
+          </tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+      </table>
+      
+  </div>
+
+  
+<script>
+    // Sample data for the table
+    const tableData = [
+    { 
+        id: 1, 
+        timestamp: '2024-12-29 14:52:03.789234', 
+        sourceIP: '192.168.1.100', 
+        destinationIP: '192.168.1.101', 
+        protocol: 'TCP', 
+        sourcePort: 443, 
+        destinationPort: 58932, 
+        flags: 'SYN, ACK', 
+        packetSize: '54 bytes' 
+    },
+    { 
+        id: 2, 
+        timestamp: '2024-12-29 14:52:05.123456', 
+        sourceIP: '192.168.1.100', 
+        destinationIP: '8.8.8.8', 
+        protocol: 'UDP', 
+        sourcePort: 55234, 
+        destinationPort: 53, 
+        flags: '', 
+        packetSize: '68 bytes' 
+    },
+    { 
+        id: 3, 
+        timestamp: '2024-12-29 14:52:07.987654', 
+        sourceIP: '192.168.1.100', 
+        destinationIP: '192.168.1.102', 
+        protocol: 'ICMP', 
+        sourcePort: '', 
+        destinationPort: '', 
+        flags: 'Echo Request', 
+        packetSize: '32 bytes' 
+    },
+    { 
+        id: 4, 
+        timestamp: '2024-12-29 14:52:10.345678', 
+        sourceIP: '192.168.1.100', 
+        destinationIP: '192.168.1.101', 
+        protocol: 'TCP', 
+        sourcePort: 80, 
+        destinationPort: 64900, 
+        flags: 'FIN', 
+        packetSize: '48 bytes' 
+    },
+    { 
+        id: 5, 
+        timestamp: '2024-12-29 14:52:12.456789', 
+        sourceIP: '192.168.1.100', 
+        destinationIP: '203.0.113.5', 
+        protocol: 'TCP', 
+        sourcePort: 8080, 
+        destinationPort: 60000, 
+        flags: 'ACK', 
+        packetSize: '512 bytes' 
+    },
+    { 
+        id: 6, 
+        timestamp: '2024-12-29 14:52:14.234567', 
+        sourceIP: '192.168.1.100', 
+        destinationIP: '8.8.4.4', 
+        protocol: 'UDP', 
+        sourcePort: 123, 
+        destinationPort: 123, 
+        flags: '', 
+        packetSize: '48 bytes' 
+    },
+    { 
+        id: 7, 
+        timestamp: '2024-12-29 14:52:16.678901', 
+        sourceIP: '192.168.1.100', 
+        destinationIP: '192.168.1.101', 
+        protocol: 'TCP', 
+        sourcePort: 22, 
+        destinationPort: 52000, 
+        flags: 'PSH, ACK', 
+        packetSize: '256 bytes' 
+    },
+    { 
+        id: 8, 
+        timestamp: '2024-12-29 14:52:18.543210', 
+        sourceIP: '192.168.1.100', 
+        destinationIP: '192.168.1.101', 
+        protocol: 'TCP', 
+        sourcePort: 21, 
+        destinationPort: 51000, 
+        flags: 'RST', 
+        packetSize: '60 bytes' 
+    },
+    { 
+        id: 9, 
+        timestamp: '2024-12-29 14:52:20.876543', 
+        sourceIP: '192.168.1.100', 
+        destinationIP: '198.51.100.10', 
+        protocol: 'HTTP', 
+        sourcePort: 80, 
+        destinationPort: 8080, 
+        flags: '', 
+        packetSize: '1024 bytes' 
+    },
+    { 
+        id: 10, 
+        timestamp: '2024-12-29 14:52:23.654321', 
+        sourceIP: '192.168.1.100', 
+        destinationIP: '203.0.113.6', 
+        protocol: 'HTTPS', 
+        sourcePort: 443, 
+        destinationPort: 62000, 
+        flags: 'SYN', 
+        packetSize: '74 bytes' 
+    },
+    { 
+        id: 11, 
+        timestamp: '2024-12-29 14:52:26.987654', 
+        sourceIP: '192.168.1.100', 
+        destinationIP: '8.8.8.8', 
+        protocol: 'UDP', 
+        sourcePort: 5353, 
+        destinationPort: 53, 
+        flags: '', 
+        packetSize: '64 bytes' 
+    },
+    { 
+        id: 12, 
+        timestamp: '2024-12-29 14:52:29.112233', 
+        sourceIP: '192.168.1.100', 
+        destinationIP: '192.168.1.101', 
+        protocol: 'TCP', 
+        sourcePort: 139, 
+        destinationPort: 52001, 
+        flags: 'ACK', 
+        packetSize: '128 bytes' 
+    },
+    { 
+        id: 13, 
+        timestamp: '2024-12-29 14:52:31.445566', 
+        sourceIP: '192.168.1.100', 
+        destinationIP: '203.0.113.7', 
+        protocol: 'TCP', 
+        sourcePort: 25, 
+        destinationPort: 587, 
+        flags: 'SYN', 
+        packetSize: '74 bytes' 
+    },
+    { 
+        id: 14, 
+        timestamp: '2024-12-29 14:52:33.778899', 
+        sourceIP: '192.168.1.100', 
+        destinationIP: '192.168.1.101', 
+        protocol: 'TCP', 
+        sourcePort: 445, 
+        destinationPort: 60001, 
+        flags: 'FIN', 
+        packetSize: '64 bytes' 
+    },
+    { 
+        id: 15, 
+        timestamp: '2024-12-29 14:52:36.123789', 
+        sourceIP: '192.168.1.100', 
+        destinationIP: '192.168.1.102', 
+        protocol: 'ICMP', 
+        sourcePort: '', 
+        destinationPort: '', 
+        flags: 'Echo Reply', 
+        packetSize: '64 bytes' 
+    },
+    { 
+        id: 16, 
+        timestamp: '2024-12-29 14:52:39.456890', 
+        sourceIP: '192.168.1.100', 
+        destinationIP: '198.51.100.20', 
+        protocol: 'HTTP', 
+        sourcePort: 80, 
+        destinationPort: 8080, 
+        flags: '', 
+        packetSize: '2048 bytes' 
+    },
+    { 
+        id: 17, 
+        timestamp: '2024-12-29 14:52:41.789123', 
+        sourceIP: '192.168.1.100', 
+        destinationIP: '203.0.113.9', 
+        protocol: 'HTTPS', 
+        sourcePort: 443, 
+        destinationPort: 61000, 
+        flags: 'SYN, ACK', 
+        packetSize: '128 bytes' 
+    },
+    { 
+        id: 18, 
+        timestamp: '2024-12-29 14:52:44.321456', 
+        sourceIP: '192.168.1.100', 
+        destinationIP: '8.8.4.4', 
+        protocol: 'UDP', 
+        sourcePort: 40000, 
+        destinationPort: 53, 
+        flags: '', 
+        packetSize: '78 bytes' 
+    },
+    { 
+        id: 19, 
+        timestamp: '2024-12-29 14:52:46.654987', 
+        sourceIP: '192.168.1.100', 
+        destinationIP: '192.168.1.101', 
+        protocol: 'TCP', 
+        sourcePort: 3389, 
+        destinationPort: 64000, 
+        flags: 'PSH, ACK', 
+        packetSize: '512 bytes' 
+    },
+    { 
+        id: 20, 
+        timestamp: '2024-12-29 14:52:49.987123', 
+        sourceIP: '192.168.1.100', 
+        destinationIP: '203.0.113.10', 
+        protocol: 'TCP', 
+        sourcePort: 21, 
+        destinationPort: 50000, 
+        flags: 'ACK', 
+        packetSize: '1024 bytes' 
+    }
+];
+
+
+    // Function to populate the table
+    function populateTable() {
+        const tbody = document.querySelector('#data-table tbody');
+        tbody.innerHTML = '';  // Clear the table before adding new rows
+
+        let index = 0;
+
+        function addRow() {
+            if (index < tableData.length) {
+                const item = tableData[index];
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${item.id}</td>
+                    <td>${item.timestamp}</td>
+                    <td>${item.sourceIP}</td>
+                    <td>${item.destinationIP}</td>
+                    <td>${item.protocol}</td>
+                    <td>${item.sourcePort || '-'}</td>
+                    <td>${item.destinationPort || '-'}</td>
+                    <td>${item.flags || '-'}</td>
+                    <td>${item.packetSize}</td>
+                `;
+                tbody.appendChild(row);
+                index++;
+                setTimeout(addRow, 3000); // 3 seconds delay before adding the next row
+            }
+        }
+
+        addRow(); // Start adding rows with delay
+    }
+
+    // Add click event listener to the 'Capture' tile to display the table
+    document.getElementById('capture-tile').addEventListener('click', () => {
+        document.getElementById('table-container').style.display = 'block';
+        populateTable();  // Populate the table with data
+    });
+</script>
+
+
+
+</body>
+</html>

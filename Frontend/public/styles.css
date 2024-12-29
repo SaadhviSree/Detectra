@@ -1,0 +1,174 @@
+/* General Page Layout */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: black; /* Change the background color to black */
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: black;
+  padding: 5px 20px; /* Decrease the top and bottom padding to reduce the gap */
+}
+
+.navbar a {
+  color: rgb(101, 148, 215);
+  text-decoration: none;
+  margin-left: 15px;
+  font-size: 16px;
+}
+
+.navbar a:hover {
+  text-decoration: underline;
+}
+
+.logo {
+  font-size: 18px;
+  color: rgb(101, 148, 215);
+  font-weight: bold;
+  margin-left: 2.5cm; /* Move the logo 1cm to the left */
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  margin-left: 10px; /* Adjust the spacing between the logo text and the icon */
+  height: 35px; /* Adjust the height of the icon as needed */
+}
+
+.navbar .search-icon {
+  margin-left: 5px; /* Adjust the spacing between the "Contact" link and the search icon */
+  height: 25px; /* Adjust the height of the search icon as needed */
+  vertical-align: middle; /* Align the icon vertically with the text */
+}
+
+/* Hero Section */
+.hero-section {
+  position: relative;
+  height: 50vh; /* Full viewport height */
+  background: url('img.jpg') center/cover no-repeat; /* Replace with your background image */
+}
+
+.hero-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7); /* 70% black overlay */
+}
+
+.hero-content {
+  position: relative;
+  color: #fff;
+  text-align: center;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.hero-content h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.hero-content p {
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+/* Feature Tiles Section */
+.features-container {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin: 2rem auto; /* Add spacing outside the hero section */
+  padding: 0 2rem; /* Add some horizontal padding */
+}
+
+.feature-tile {
+  background: #84c4e7;
+  border: 2px solid #0e0e0e;
+  border-radius: 8px;
+  padding: 2rem;
+  text-align: center;
+  width: 250px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+}
+
+.feature-tile:hover {
+  transform: translateY(-10px); /* Slightly lift the tile on hover */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Add a stronger shadow */
+}
+
+.feature-tile h2 {
+  font-size: 1.5rem;
+  color: #0d0d0d;
+  margin-bottom: 0.5rem;
+}
+
+.feature-tile p {
+  font-size: 1rem;
+  color: #212121;
+  line-height: 1.5;
+}
+
+/* Add spacing between sections */
+.hero-section {
+  margin-bottom: 3rem;
+}
+
+/* Table Section */
+.table-container {
+  display: none; /* Initially hide the table */
+  margin-top: 1rem;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.table-container table {
+  width: 100%; /* Ensure the table takes full width */
+  border-collapse: collapse;
+}
+
+.table-container th, .table-container td {
+  padding: 0.8rem;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+.table-container th {
+  background-color: #f4f4f4;
+  font-weight: bold;
+}
+
+/* Responsive Layout */
+@media (max-width: 768px) {
+  .features-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .feature-tile {
+    width: 80%;
+    margin: 10px 0;
+  }
+
+  #data-table th, #data-table td {
+    font-size: 0.9em;
+  }
+}
