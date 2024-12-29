@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anomaly Detection Results</title>
+    <style>
+        .table {
+            width: 100%;
+            margin: 20px 0;
+            border-collapse: collapse;
+        }
+        .table, .table th, .table td {
+            border: 1px solid #ddd;
+        }
+        .table th, .table td {
+            padding: 8px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <h1>Anomaly Detection Results</h1>
+    
+    <h3>Silhouette Score: {{ anomaly_summary.silhouette_score }}</h3>
+    
+    <h3>Number of anomalies detected:</h3>
+    <ul>
+        <li>Isolation Forest: {{ anomaly_summary.isolation_forest_anomalies }}</li>
+        <li>DBSCAN: {{ anomaly_summary.dbscan_anomalies }}</li>
+    </ul>
+    
+    <h3>Top Anomalous Logs:</h3>
+    {{ top_anomalies_html | safe }}
+    
+    <h3>Graph of Anomalies:</h3>
+    <img src="data:image/png;base64,{{ img_str }}" alt="Anomaly Graph" />
+    
+    <br><br>
+    <a href="/">Go back to upload a new file</a>
+</body>
+</html>
